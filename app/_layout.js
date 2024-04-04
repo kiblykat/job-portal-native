@@ -1,8 +1,4 @@
-import { SplashScreen, Stack } from "expo-router";
-import { useCallback } from "react";
-import { useFonts } from "expo-font";
-
-SplashScreen.preventAutoHideAsync();
+import { Stack } from "expo-router";
 
 const Layout = () => {
   return <Stack />;
