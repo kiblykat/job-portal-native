@@ -16,7 +16,7 @@ import useFetch from "../../../hook/useFetch";
 const Popularjobs = () => {
   const router = useRouter();
   const { data, isLoading, error } = useFetch("search", {
-    query: "React developer",
+    query: "React",
     num_pages: "1",
   });
 
@@ -29,6 +29,7 @@ const Popularjobs = () => {
 
   return (
     <View style={styles.container}>
+      {/*styles.header sets elements to render on same line*/}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Popular jobs</Text>
         <TouchableOpacity>
@@ -37,13 +38,16 @@ const Popularjobs = () => {
       </View>
 
       <View style={styles.cardsContainer}>
+        {/* react built-in spinner if isLoading */}
         {isLoading ? (
-          <ActivityIndicator size='large' color={COLORS.primary} />
-        ) : error ? (
+          <ActivityIndicator size="large" color={COLORS.primary} />
+        ) : //OR 'something went wrong' if serror
+        error ? (
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
             data={data}
+            //standard prop of FlatList to render otems
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
@@ -51,7 +55,7 @@ const Popularjobs = () => {
                 handleCardPress={handleCardPress}
               />
             )}
-            keyExtractor={(item) => item.job_id}
+            keyExtractor={(item) => item?.job_id}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />
