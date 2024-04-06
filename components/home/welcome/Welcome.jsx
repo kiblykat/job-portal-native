@@ -58,7 +58,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
               <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item} //similar to key in React
           contentContainerStyle={{ columnGap: SIZES.small }}
           horizontal
         />
